@@ -63,3 +63,70 @@ h1, h2, h3 {
 .swiper-button-prev:hover::after{
   color: white !important;
 }
+
+
+/*Cores contraste*/
+/* Alto contraste global */
+.high-contrast {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* Todos os elementos */
+.high-contrast * {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* Links */
+.high-contrast a {
+  color: #ffff00 !important;
+}
+
+/* Inputs */
+.high-contrast input,
+.high-contrast textarea,
+.high-contrast select {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+/* Placeholder */
+.high-contrast input::placeholder,
+.high-contrast textarea::placeholder {
+  color: #ccc !important;
+}
+
+/* Botões */
+.high-contrast button {
+  background-color: #222 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+/* Imagens */
+.high-contrast img {
+  filter: grayscale(100%) contrast(120%);
+}
+
+/* Ícones SVG (Lucide) */
+.high-contrast svg {
+  color: #fff !important;
+  stroke: #fff !important;
+}
+
+.dyslexia-font,
+.dyslexia-font * {
+  font-family: "Lexend", sans-serif !important;
+}
+
+.large-cursor,
+.large-cursor * {
+  cursor: url(
+    "https://cur.cursors-4u.net/cursors/cur-11/cur1054.cur"
+  ),
+  auto;
+}

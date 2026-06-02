@@ -9,17 +9,17 @@ import Dashboard from "../pages/Dashboard/Dashboard.jsx";
 
 function AppRoutes() {
   return (
-    <Router>
-      <Routes>
-        <Route path={paths.public.home} element={<Home />} />
-        <Route path={paths.public.auth} element={<Auth />} />
-        <Route path={paths.public.payments} element={<Payments />} />
-        <Route path={paths.public.productDetails} element={<Product />} />
-        <Route path={paths.public.categoryName} element={<Category />} />
-        <Route path={paths.private.dashboard} element={<Dashboard />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path={paths.public.home} element={<Home />} />
+          <Route path={paths.public.auth} element={<Auth />} />
+          <Route path={paths.public.payments} element={<Payments />} />
+          <Route path={paths.public.productDetails} element={<Product />} />
+          <Route path={paths.public.categoryName} element={<Category />} />
+          <Route path={paths.private.dashboard} element={<Dashboard />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Router>
   );
 }
 

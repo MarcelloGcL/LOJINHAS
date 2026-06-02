@@ -1,4 +1,12 @@
-import { Search, ShoppingBasket, User, Heart, Headset, LogOut, Wrench } from "lucide-react";
+import {
+  Search,
+  ShoppingBasket,
+  User,
+  Heart,
+  Headset,
+  LogOut,
+  Wrench,
+} from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
@@ -8,7 +16,7 @@ import { useCart } from "../../context/CartContext";
 import CartDrawer from "../cart/CartDrawer";
 import "./Header.css";
 import Swal from "sweetalert2";
-import 'sweetalert2/dist/sweetalert2.min.css';
+import "sweetalert2/dist/sweetalert2.min.css";
 
 function Header() {
   const { user, logout } = useAuth();
@@ -19,7 +27,8 @@ function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [perfil, setPerfil] = useState(null);
   const [tipoPerfil, setTipoPerfil] = useState(null);
-  
+  const [showAccessibility, setShowAccessibility] = useState(false);
+
   const hasFetched = useRef(false);
 
   useEffect(() => {
@@ -29,19 +38,26 @@ function Header() {
   }, []);
 
   const carregarDadosUsuario = useCallback(async () => {
-    if (!user?.usuarioId || user.usuarioId === "null" || user.usuarioId === "undefined") {
+    if (
+      !user?.usuarioId ||
+      user.usuarioId === "null" ||
+      user.usuarioId === "undefined"
+    ) {
       setPerfil({ nome: "Usuário", saldo: 0 });
       return;
     }
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/Usuarios/GetInfoUsuario/${user.usuarioId}`, {
-        method: 'GET',
-        headers: { 
-          Authorization: `Bearer ${user.token}`,
-          "Content-Type": "application/json"
-        }
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/Usuarios/GetInfoUsuario/${user.usuarioId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+            "Content-Type": "application/json",
+          },
+        },
+      );
 
       if (!response.ok) {
         console.error("Erro ao buscar dados do usuário:", response.status);
@@ -52,9 +68,8 @@ function Header() {
 
       setPerfil({
         nome: data.Nome ?? "Usuário",
-        saldo: data.Saldo ?? 0
+        saldo: data.Saldo ?? 0,
       });
-
     } catch (error) {
       console.error("Erro na requisição do perfil:", error);
     }
@@ -72,7 +87,6 @@ function Header() {
       if (perfil?.toUpperCase() !== "ADMINISTRADOR") {
         await carregarDadosUsuario();
       }
-
     } catch (error) {
       console.error("Erro ao buscar tipo de perfil:", error);
       setTipoPerfil(null);
@@ -94,8 +108,8 @@ function Header() {
       setTipoPerfil(null);
 
       await Swal.fire({
-        icon: 'success',
-        title: 'Sucesso!',
+        icon: "success",
+        title: "Sucesso!",
         text: "Logout realizado com sucesso!",
         timer: 1500,
         showConfirmButton: false,
@@ -103,20 +117,29 @@ function Header() {
 
       navigate("/");
     } catch (error) {
-      Swal.fire({ icon: 'error', title: 'Ops...', text: 'Erro ao sair.' });
+      Swal.fire({ icon: "error", title: "Ops...", text: "Erro ao sair." });
     }
   };
 
   const formatarMoeda = (valor) => {
     const numero = Number(valor || 0);
-    return numero.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    return numero.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  };
+
+  const toggleContrast = () => {
+    document.documentElement.classList.toggle("high-contrast");
   };
 
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
       <div className="header-container">
         <Link to="/" className="logo-link">
-          <h2 className="logo">Tech<span>Store</span></h2>
+          <h2 className="logo">
+            Tech<span>Store</span>
+          </h2>
         </Link>
 
         <div className="search">
@@ -128,7 +151,11 @@ function Header() {
           {user ? (
             tipoPerfil?.toUpperCase() === "ADMINISTRADOR" ? (
               <div className="login-logged">
-                <button onClick={handleLogout} className="logout-button" title="Sair">
+                <button
+                  onClick={handleLogout}
+                  className="logout-button"
+                  title="Sair"
+                >
                   <LogOut size={20} />
                 </button>
               </div>
@@ -139,7 +166,11 @@ function Header() {
                   <span>Olá, {perfil?.nome || "Usuário"}!</span>
                   <strong>Saldo: {formatarMoeda(perfil?.saldo)}</strong>
                 </div>
-                <button onClick={handleLogout} className="logout-button" title="Sair">
+                <button
+                  onClick={handleLogout}
+                  className="logout-button"
+                  title="Sair"
+                >
                   <LogOut size={20} />
                 </button>
               </div>
@@ -177,6 +208,24 @@ function Header() {
             </motion.div>
             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
           </button>
+
+          <button
+            className="accessibility-btn"
+            onClick={() => setShowAccessibility(!showAccessibility)}
+          >
+            ♿ Acessibilidade
+          </button>
+
+          {showAccessibility && (
+            <div className="accessibility-menu">
+              <button onClick={toggleContrast}>Alto Contraste</button>{" "}
+              <button>Aumentar Fonte</button>
+              <button>Diminuir Fonte</button>
+              <button>Fonte Dislexia</button>
+              <button>Cursor Ampliado</button>
+              <button>Ler Página</button>
+            </div>
+          )}
         </div>
       </div>
 
