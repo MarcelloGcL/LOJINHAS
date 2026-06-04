@@ -1,5 +1,5 @@
 .auth-container {
-  height: 100vh;
+  height: 125vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,7 +94,7 @@
   padding: 12px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
-  font-size: 14px;
+  font-size: 1rem;
   transition: all 0.25s;
 }
 
@@ -106,7 +106,7 @@
 
 .auth-form p.error {
   color: #dc2626;
-  font-size: 12px;
+  font-size: 0.85rem;
   margin: 2px 0 0 0;
   animation: fadeIn 0.3s ease-out;
 }
@@ -132,7 +132,7 @@
   border-radius: 6px;
   background: var(--cta);
   color: white;
-  font-size: 15px;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s;
@@ -148,7 +148,7 @@
   padding: 12px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
-  font-size: 14px;
+  font-size: 1rem;
   background: white;
   color: var(--text);
   transition: all 0.25s;
@@ -213,7 +213,7 @@
 .age-valid,
 .age-invalid {
   margin-top: 4px;
-  font-size: 12px;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -262,7 +262,7 @@
   justify-content: center;
   gap: 10px;
 
-  font-size: 14px;
+  font-size: 1.1rem;
   font-weight: 500;
   color: var(--text);
 

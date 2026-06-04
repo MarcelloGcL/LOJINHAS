@@ -20,7 +20,7 @@
     try {
       if (metodosComPagamento.includes(tipoPagamento)) {
         await axios.post(
-          `${import.meta.env.VITE_API_URL}/PagamentoControllers/Processar/${pedidoId}`,
+          `${import.meta.env.VITE_API_URL}/Pagamento/Processar/${pedidoId}`,
           { TipoPagamento: tipoPagamento },
           config
         );

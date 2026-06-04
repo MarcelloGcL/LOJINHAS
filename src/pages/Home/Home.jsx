@@ -20,11 +20,11 @@ function Home() {
       <Categories title="Confira nossas Categorias" />
       <ProductSection title="Consoles" categoriasIds={[8]} />
       <SectionDivider images={[Banner0]} />
-      <ProductSection title="Periféricos" categoriasIds={[5, 6, 7, 4]} />
+      <ProductSection title="Periféricos" categoriasIds={[4, 3, 2, 1]} />
       <SectionDivider images={[Banner1, Banner2]} />
-      <ProductSection title="Smartphones" categoriasIds={[1]} />
+      <ProductSection title="Smartphones" categoriasIds={[7]} />
       <SectionDivider images={[Banner3, Banner4, Banner5]} />
-      <ProductSection title="Acessórios" categoriasIds={[2, 9, 3]} />
+      <ProductSection title="Acessórios" categoriasIds={[5]} />
       <RecommendedBrands title="Marcas Recomendadas" />
       <Footer />
     </>

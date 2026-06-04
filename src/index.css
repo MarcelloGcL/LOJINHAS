@@ -2,27 +2,47 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  --font-main: 'Inter', sans-serif;
-  --font-title: 'Montserrat', sans-serif;
+  --font-main: "Inter", sans-serif;
+  --font-title: "Montserrat", sans-serif;
 }
+
+:root {
+  --font-scale: 1;
+}
+
+html {
+  font-size: calc(100% * var(--font-scale));
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-main);
   background: var(--background);
-  -webkit-font-smoothing: antialiased; 
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-title);
   letter-spacing: -0.02em;
 }
 
-/* ---------------- PAGINAÇÃO (bolinhas) ---------------- */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
 .swiper-pagination-bullet {
   width: 10px !important;
   height: 10px !important;
   background: var(--background) !important;
   opacity: 1 !important;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .swiper-pagination-bullet-active {
@@ -31,7 +51,6 @@ h1, h2, h3 {
   background: var(--cta) !important;
 }
 
-/* ---------------- SETAS ---------------- */
 .swiper-button-next,
 .swiper-button-prev {
   width: 28px !important;
@@ -39,40 +58,34 @@ h1, h2, h3 {
   padding: 8px !important;
   background: var(--background);
   border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: all .2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
 }
 
-/* posição */
-.swiper-button-next{
+.swiper-button-next {
   right: 30px !important;
 }
 
-.swiper-button-prev{
+.swiper-button-prev {
   left: 30px !important;
 }
 
-/* hover */
 .swiper-button-next:hover,
-.swiper-button-prev:hover{
+.swiper-button-prev:hover {
   background: var(--cta) !important;
   color: white !important;
 }
 
 .swiper-button-next:hover::after,
-.swiper-button-prev:hover::after{
+.swiper-button-prev:hover::after {
   color: white !important;
 }
 
-
-/*Cores contraste*/
-/* Alto contraste global */
 .high-contrast {
   background-color: #000 !important;
   color: #fff !important;
 }
 
-/* Todos os elementos */
 .high-contrast * {
   background-color: #000 !important;
   color: #fff !important;
@@ -80,12 +93,10 @@ h1, h2, h3 {
   box-shadow: none !important;
 }
 
-/* Links */
 .high-contrast a {
   color: #ffff00 !important;
 }
 
-/* Inputs */
 .high-contrast input,
 .high-contrast textarea,
 .high-contrast select {
@@ -94,25 +105,21 @@ h1, h2, h3 {
   border: 2px solid #fff !important;
 }
 
-/* Placeholder */
 .high-contrast input::placeholder,
 .high-contrast textarea::placeholder {
   color: #ccc !important;
 }
 
-/* Botões */
 .high-contrast button {
   background-color: #222 !important;
   color: #fff !important;
   border: 2px solid #fff !important;
 }
 
-/* Imagens */
 .high-contrast img {
-  filter: grayscale(100%) contrast(120%);
+  filter: contrast(150%) brightness(120%);
 }
 
-/* Ícones SVG (Lucide) */
 .high-contrast svg {
   color: #fff !important;
   stroke: #fff !important;
@@ -120,7 +127,7 @@ h1, h2, h3 {
 
 .dyslexia-font,
 .dyslexia-font * {
-  font-family: "Lexend", sans-serif !important;
+  font-family: "Comic Neue", cursive !important;
 }
 
 .large-cursor,
@@ -129,4 +136,51 @@ h1, h2, h3 {
     "https://cur.cursors-4u.net/cursors/cur-11/cur1054.cur"
   ),
   auto;
+}
+
+.bold-text,
+.bold-text * {
+  font-weight: 700 !important;
+}
+
+.spacing-text,
+.spacing-text * {
+  letter-spacing: 2px !important;
+}
+
+.line-height-text,
+.line-height-text * {
+  line-height: 2 !important;
+}
+
+.gray-scale {
+  filter: grayscale(100%);
+}
+
+.low-saturation {
+  filter: saturate(50%);
+}
+
+.highlight-links a {
+  background: yellow !important;
+  color: black !important;
+  padding: 2px 4px;
+  border-radius: 4px;
+  text-decoration: underline !important;
+}
+
+.pause-animations *,
+.pause-animations *::before,
+.pause-animations *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

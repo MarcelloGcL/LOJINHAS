@@ -1,0 +1,46 @@
+
+.accessibility-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 9998;
+}
+
+.floating-accessibility-button {
+  position: fixed;
+  right: 10px;
+  bottom: 290px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10%;
+  background: #2563eb;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+  z-index: 10001;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.accessibility-icon {
+  width: 34px;
+  height: 34px;
+}
+
+.floating-accessibility-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.45);
+}
+
+.floating-accessibility-button:active {
+  transform: scale(0.95);
+}
+

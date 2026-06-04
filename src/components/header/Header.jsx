@@ -27,14 +27,19 @@ function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [perfil, setPerfil] = useState(null);
   const [tipoPerfil, setTipoPerfil] = useState(null);
-  const [showAccessibility, setShowAccessibility] = useState(false);
 
   const hasFetched = useRef(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const carregarDadosUsuario = useCallback(async () => {
@@ -43,7 +48,11 @@ function Header() {
       user.usuarioId === "null" ||
       user.usuarioId === "undefined"
     ) {
-      setPerfil({ nome: "Usuário", saldo: 0 });
+      setPerfil({
+        nome: "Usuário",
+        saldo: 0,
+      });
+
       return;
     }
 
@@ -82,6 +91,7 @@ function Header() {
       const data = await getUser(user.usuarioId, user.token);
 
       const perfil = data?.Perfil ?? null;
+
       setTipoPerfil(perfil);
 
       if (perfil?.toUpperCase() !== "ADMINISTRADOR") {
@@ -89,12 +99,14 @@ function Header() {
       }
     } catch (error) {
       console.error("Erro ao buscar tipo de perfil:", error);
+
       setTipoPerfil(null);
     }
   }, [user, carregarDadosUsuario]);
 
   useEffect(() => {
     if (hasFetched.current) return;
+
     hasFetched.current = true;
 
     carregarPerfilUsuario();
@@ -103,6 +115,7 @@ function Header() {
   const handleLogout = async () => {
     try {
       await logout();
+
       setUserId(null);
       setPerfil(null);
       setTipoPerfil(null);
@@ -117,120 +130,114 @@ function Header() {
 
       navigate("/");
     } catch (error) {
-      Swal.fire({ icon: "error", title: "Ops...", text: "Erro ao sair." });
+      Swal.fire({
+        icon: "error",
+        title: "Ops...",
+        text: "Erro ao sair.",
+      });
     }
   };
 
   const formatarMoeda = (valor) => {
     const numero = Number(valor || 0);
+
     return numero.toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
     });
   };
 
-  const toggleContrast = () => {
-    document.documentElement.classList.toggle("high-contrast");
-  };
-
   return (
-    <header className={`header ${scrolled ? "scrolled" : ""}`}>
-      <div className="header-container">
-        <Link to="/" className="logo-link">
-          <h2 className="logo">
-            Tech<span>Store</span>
-          </h2>
-        </Link>
+    <>
+      <header className={`header ${scrolled ? "scrolled" : ""}`}>
+        <div className="header-container">
+          <Link to="/" className="logo-link">
+            <h2 className="logo">
+              Loji<span>nhas</span>
+            </h2>
+          </Link>
 
-        <div className="search">
-          <Search size={18} className="search-icon" />
-          <input type="text" placeholder="Buscar produtos..." />
-        </div>
+          <div className="search">
+            <Search size={18} className="search-icon" />
 
-        <div className="actions">
-          {user ? (
-            tipoPerfil?.toUpperCase() === "ADMINISTRADOR" ? (
-              <div className="login-logged">
-                <button
-                  onClick={handleLogout}
-                  className="logout-button"
-                  title="Sair"
-                >
-                  <LogOut size={20} />
-                </button>
-              </div>
-            ) : (
-              <div className="login-logged">
-                <User size={25} className="login-icon" />
-                <div className="login-text">
-                  <span>Olá, {perfil?.nome || "Usuário"}!</span>
-                  <strong>Saldo: {formatarMoeda(perfil?.saldo)}</strong>
+            <input type="text" placeholder="Buscar produtos..." />
+          </div>
+
+          <div className="actions">
+            {user ? (
+              tipoPerfil?.toUpperCase() === "ADMINISTRADOR" ? (
+                <div className="login-logged">
+                  <button
+                    onClick={handleLogout}
+                    className="logout-button"
+                    title="Sair"
+                  >
+                    <LogOut size={20} />
+                  </button>
                 </div>
-                <button
-                  onClick={handleLogout}
-                  className="logout-button"
-                  title="Sair"
-                >
-                  <LogOut size={20} />
-                </button>
-              </div>
-            )
-          ) : (
-            <Link to="/Auth" className="login">
-              <User size={25} className="login-icon" />
-              <div className="login-text">
-                <span>Bem-vindo(a)</span>
-                <strong>Entre ou cadastre-se</strong>
-              </div>
+              ) : (
+                <div className="login-logged">
+                  <User size={25} className="login-icon" />
+
+                  <div className="login-text">
+                    <span>Olá, {perfil?.nome || "Usuário"}!</span>
+
+                    <strong>Saldo: {formatarMoeda(perfil?.saldo)}</strong>
+                  </div>
+
+                  <button
+                    onClick={handleLogout}
+                    className="logout-button"
+                    title="Sair"
+                  >
+                    <LogOut size={20} />
+                  </button>
+                </div>
+              )
+            ) : (
+              <Link to="/Auth" className="login">
+                <User size={25} className="login-icon" />
+
+                <div className="login-text">
+                  <span>Bem-vindo(a)</span>
+
+                  <strong>Entre ou cadastre-se</strong>
+                </div>
+              </Link>
+            )}
+
+            {tipoPerfil?.toUpperCase() === "ADMINISTRADOR" && (
+              <Link to="/dashboard" className="action-item" title="Admin">
+                <Wrench size={24} />
+              </Link>
+            )}
+
+            <Link to="/atendimento" className="action-item" title="Atendimento">
+              <Headset size={24} />
             </Link>
-          )}
 
-          {tipoPerfil?.toUpperCase() === "ADMINISTRADOR" && (
-            <Link to="/dashboard" className="action-item" title="Admin">
-              <Wrench size={24} />
+            <Link to="/favoritos" className="action-item" title="Favoritos">
+              <Heart size={24} />
             </Link>
-          )}
 
-          <Link to="/atendimento" className="action-item" title="Atendimento">
-            <Headset size={24} />
-          </Link>
+            <button className="cart" onClick={() => setIsCartOpen(true)}>
+              <motion.div
+                animate={cartCount > 0 ? { scale: [1, 1.4, 1] } : {}}
+                transition={{
+                  duration: 0.3,
+                }}
+              >
+                <ShoppingBasket size={26} strokeWidth={2.5} />
+              </motion.div>
 
-          <Link to="/favoritos" className="action-item" title="Favoritos">
-            <Heart size={24} />
-          </Link>
-
-          <button className="cart" onClick={() => setIsCartOpen(true)}>
-            <motion.div
-              animate={cartCount > 0 ? { scale: [1, 1.4, 1] } : {}}
-              transition={{ duration: 0.3 }}
-            >
-              <ShoppingBasket size={26} strokeWidth={2.5} />
-            </motion.div>
-            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-          </button>
-
-          <button
-            className="accessibility-btn"
-            onClick={() => setShowAccessibility(!showAccessibility)}
-          >
-            ♿ Acessibilidade
-          </button>
-
-          {showAccessibility && (
-            <div className="accessibility-menu">
-              <button onClick={toggleContrast}>Alto Contraste</button>{" "}
-              <button>Aumentar Fonte</button>
-              <button>Diminuir Fonte</button>
-              <button>Fonte Dislexia</button>
-              <button>Cursor Ampliado</button>
-              <button>Ler Página</button>
-            </div>
-          )}
+              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+            </button>
+          </div>
         </div>
-      </div>
 
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-    </header>
+        <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      </header>
+    </>
   );
 }
 

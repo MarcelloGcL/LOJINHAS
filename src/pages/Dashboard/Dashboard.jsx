@@ -142,7 +142,7 @@ function Dashboard() {
     const token = localStorage.getItem("token");
     try {
       await fetch(`${import.meta.env.VITE_API_URL}/Categorias/${id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify({ CategoriaId: id, Nome: catEditNome })
       });
@@ -159,7 +159,7 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       <aside className="sidebar-fixed">
-        <div className="sidebar-logo"><h2>TechStore</h2></div>
+        <div className="sidebar-logo"><h2>LOJINHAS</h2></div>
         <nav className="sidebar-menu">
           <button className={activeTab === "inventory" ? "active" : ""} onClick={() => setActiveTab("inventory")}><FiPackage /> Estoque</button>
           <button className={activeTab === "customers" ? "active" : ""} onClick={() => setActiveTab("customers")}><FiUsers /> Clientes</button>
@@ -220,7 +220,7 @@ function Dashboard() {
                     <td><strong>{u.Nome}</strong></td>
                     <td>{u.Email}</td>
                     <td>{u.Idade} anos</td>
-                    <td><span className="cat-badge">{u.Perfil === 0 ? "Admin" : "Cliente"}</span></td>
+                    <td><span className="cat-badge">{u.Perfil === 1 ? "Administrador" : "Cliente"}</span></td>
                     <td><button className="action-btn delete" onClick={() => { setItemSelecionado(u); setTipoExclusao("cliente"); setIsDeleteModalOpen(true); }}><FiTrash2 /></button></td>
                   </tr>
                 ))}

@@ -8,7 +8,7 @@
 }
 
 .category-title{
-  font-size:28px;
+  font-size:1.5rem;
   font-weight:700;
   color:var(--primary);
 }
@@ -98,7 +98,7 @@
 }
 
 .category-name{
-  font-size:15px;
+  font-size:1rem;
   font-weight:600;
   color:var(--text);
 }
