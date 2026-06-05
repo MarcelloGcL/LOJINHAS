@@ -17,18 +17,22 @@ function Banner() {
         modules={[Navigation, Pagination, Autoplay]}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}
         slidesPerView={1}
         spaceBetween={20}
       >
         {banners.map((banner, index) => (
           <SwiperSlide key={index}>
-            <div
-              className="banner-slide"
-              alt={banner.image}
-              style={{ backgroundImage: `url(${banner.image})` }}
-            />
+            <div className="banner-slide">
+              <img
+                src={banner.image}
+                alt={`Banner promocional ${index + 1}`}
+                fetchPriority={index === 0 ? "high" : "low"}
+                loading={index === 0 ? "eager" : "lazy"} 
+                className="banner-image"
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
