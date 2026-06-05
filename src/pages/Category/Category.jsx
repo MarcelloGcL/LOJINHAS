@@ -76,7 +76,7 @@ function Category() {
               {products.map((item) => (
                 <div key={item.id} className="cat-card" onClick={() => navigate(`/product/${item.id}`)}>
                   <div className="cat-img-box">
-                    <img src={item.image} alt={item.name} />
+                    <img src={item.image} alt={item.name} loading="lazy" />
                   </div>
 
                   <div className="cat-txt-box">

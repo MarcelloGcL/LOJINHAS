@@ -1,15 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { paths } from "./paths.js"
-import Home from "../pages/Home/Home.jsx"
-import Auth from "../pages/Auth/Auth.jsx"
-import Payments from "../pages/Payments/Payments.jsx"
-import Product from "../pages/ProductDetails/ProductDetails.jsx"
-import Category from "../pages/Category/Category.jsx"
-import Dashboard from "../pages/Dashboard/Dashboard.jsx";
+import { Suspense, lazy } from "react";
+import { paths } from "./paths.js";
+
+const Home = lazy(() => import("../pages/Home/Home.jsx"));
+const Auth = lazy(() => import("../pages/Auth/Auth.jsx"));
+const Payments = lazy(() => import("../pages/Payments/Payments.jsx"));
+const Product = lazy(() => import("../pages/ProductDetails/ProductDetails.jsx"));
+const Category = lazy(() => import("../pages/Category/Category.jsx"));
+const Dashboard = lazy(() => import("../pages/Dashboard/Dashboard.jsx"));
 
 function AppRoutes() {
   return (
-      <Router>
+    <Router>
+      <Suspense fallback={<div>Carregando...</div>}>
         <Routes>
           <Route path={paths.public.home} element={<Home />} />
           <Route path={paths.public.auth} element={<Auth />} />
@@ -19,7 +22,8 @@ function AppRoutes() {
           <Route path={paths.private.dashboard} element={<Dashboard />} />
           <Route path="*" element={<Home />} />
         </Routes>
-      </Router>
+      </Suspense>
+    </Router>
   );
 }
 

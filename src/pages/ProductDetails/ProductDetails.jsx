@@ -131,7 +131,7 @@ export default function ProductDetails() {
         <Link to="/" className="cat-back"><ArrowLeft size={16} /> Voltar</Link>
         <div className="details-wrapper">
           <div className="image-section" onMouseMove={handleMouseMove} onMouseEnter={() => setShowZoom(true)} onMouseLeave={() => setShowZoom(false)}>
-            <img src={product.image} alt={product.name} />
+            <img src={product.image} alt={product.name} loading="lazy" />
             {showZoom && (
               <div className="zoom-lens" style={{ backgroundImage: `url(${product.image})`, ...zoomStyle }} />
             )}
