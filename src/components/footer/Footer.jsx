@@ -15,18 +15,24 @@ const Footer = () => {
           <h2 className="logo-text">Tech<span>Store</span></h2>
           <p className="footer-description">Tecnologia de ponta para quem busca performance e inovação.</p>
           <div className="footer-socials">
-            <a href="#"><FontAwesomeIcon icon={faInstagram} /></a>
-            <a href="#"><FontAwesomeIcon icon={faFacebook} /></a>
-            <a href="#"><FontAwesomeIcon icon={faLinkedin} /></a>
+            <a href="#" aria-label="Instagram">
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+            <a href="#" aria-label="Facebook">
+              <FontAwesomeIcon icon={faFacebook} />
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
           </div>
         </div>
 
         <div className="footer-section">
           <h3>Atendimento</h3>
           <ul className="footer-list">
-            <li><FontAwesomeIcon icon={faClock} className="icon-blue" aria-hidden="true" /> Seg a Sex: 08h às 18h</li>
-            <li><FontAwesomeIcon icon={faEnvelope} className="icon-blue" aria-hidden="true" /> suporte@techstore.com</li>
-            <li><FontAwesomeIcon icon={faPhone} className="icon-blue" aria-hidden="true" /> (85) 99999-9999</li>
+            <li><FontAwesomeIcon icon={faClock} className="icon-blue" aria-hidden="true" aria-label="Horário de Funcionamento" /> Seg a Sex: 08h às 18h</li>
+            <li><FontAwesomeIcon icon={faEnvelope} className="icon-blue" aria-hidden="true" aria-label="Email de Suporte" /> suporte@techstore.com</li>
+            <li><FontAwesomeIcon icon={faPhone} className="icon-blue" aria-hidden="true" aria-label="Telefone de Suporte" /> (85) 99999-9999</li>
           </ul>
         </div>
 
@@ -43,11 +49,11 @@ const Footer = () => {
           <h3>Segurança</h3>
           <div className="security-badges">
             <div className="security-item">
-              <FontAwesomeIcon icon={faShieldHalved} />
+              <FontAwesomeIcon icon={faShieldHalved} aria-label="SSL Blindado" />
               <span>SSL Blindado</span>
             </div>
             <div className="security-item">
-              <FontAwesomeIcon icon={faLock} />
+              <FontAwesomeIcon icon={faLock} aria-label="Compra Segura" />
               <span>Compra Segura</span>
             </div>
           </div>
@@ -60,7 +66,7 @@ const Footer = () => {
       </div>
 
       {/* Botão Scroll to Top */}
-      <button id="scrollToTopBtn" className="scrollToTopBtn"></button>
+      <button id="scrollToTopBtn" className="scrollToTopBtn" aria-label="Voltar para o topo"></button>
     </footer>
   );
 };

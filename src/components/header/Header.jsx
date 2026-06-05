@@ -152,15 +152,15 @@ function Header() {
       <header className={`header ${scrolled ? "scrolled" : ""}`}>
         <div className="header-container">
           <Link to="/" className="logo-link">
-            <h1 className="logo">
+            <h1 className="logo" aria-label="Lojiinha - Página Inicial">
               Loji<span>nha</span>
             </h1>
           </Link>
 
           <div className="search">
-            <Search size={18} className="search-icon" />
+            <Search size={18} className="search-icon" aria-label="Ícone de Busca" />
 
-            <input type="text" placeholder="Buscar produtos..." />
+            <input type="text" placeholder="Buscar produtos..." aria-label="Buscar produtos..." />
           </div>
 
           <div className="actions">
@@ -171,6 +171,7 @@ function Header() {
                     onClick={handleLogout}
                     className="logout-button"
                     title="Sair"
+                    aria-label="Sair"
                   >
                     <LogOut size={20} />
                   </button>
@@ -189,6 +190,7 @@ function Header() {
                     onClick={handleLogout}
                     className="logout-button"
                     title="Sair"
+                    aria-label="Sair"
                   >
                     <LogOut size={20} />
                   </button>
@@ -207,27 +209,27 @@ function Header() {
             )}
 
             {tipoPerfil?.toUpperCase() === "ADMINISTRADOR" && (
-              <Link to="/dashboard" className="action-item" title="Admin">
+              <Link to="/dashboard" className="action-item" title="Admin" aria-label="Painel de Administração">
                 <Wrench size={24} />
               </Link>
             )}
 
-            <Link to="/atendimento" className="action-item" title="Atendimento">
-              <Headset size={24} />
+            <Link to="/atendimento" className="action-item" title="Atendimento" aria-label="Atendimento">
+              <Headset aria-label="Atendimento" size={24} />
             </Link>
 
-            <Link to="/favoritos" className="action-item" title="Favoritos">
-              <Heart size={24} />
+            <Link to="/favoritos" className="action-item" title="Favoritos" aria-label="Favoritos">
+              <Heart aria-label="Favoritos" size={24} />
             </Link>
 
-            <button className="cart" onClick={() => setIsCartOpen(true)}>
+            <button className="cart" onClick={() => setIsCartOpen(true)} aria-label="Carrinho de Compras">
               <motion.div
                 animate={cartCount > 0 ? { scale: [1, 1.4, 1] } : {}}
                 transition={{
                   duration: 0.3,
                 }}
               >
-                <ShoppingBasket size={26} strokeWidth={2.5} />
+                <ShoppingBasket aria-label="Carrinho de Compras" size={26} strokeWidth={2.5} />
               </motion.div>
 
               {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}

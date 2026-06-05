@@ -59,18 +59,18 @@ export default function CartDrawer({ isOpen, onClose }) {
       <div className="drawer-content" onClick={(e) => e.stopPropagation()}>
         <div className="drawer-header">
           <div className="header-title">
-            <ShoppingBag size={22} color="#3B82F6" />
+            <ShoppingBag aria-label="Carrinho de Compras" size={22} color="#3B82F6" />
             <h2>Seu Carrinho</h2>
           </div>
           <button onClick={onClose} className="close-btn">
-            <X size={24} />
+            <X size={24} aria-label="Fechar Carrinho" />
           </button>
         </div>
 
         <div className="drawer-body">
           {cart.length === 0 ? (
             <div className="empty-state">
-              <ShoppingBag size={50} color="#333" />
+              <ShoppingBag aria-label="Carrinho de Compras" size={50} color="#333" />
               <p>O carrinho está vazio</p>
             </div>
           ) : (
@@ -85,18 +85,21 @@ export default function CartDrawer({ isOpen, onClose }) {
                   </div>
                 </div>
                 <div className="item-actions">
-                  <button className="removed-btn" onClick={() => removeFromCart(item.id)}>
+                  <button className="removed-btn" onClick={() => removeFromCart(item.id)} aria-label="Remover do carrinho">
                     <Trash2 size={18} />
                   </button>
                   <div className="quantity-control">
                     <button 
                       onClick={() => decreaseQuantity(item.id)} 
                       disabled={item.quantity <= 1}
+                      aria-label="Diminuir quantidade"
                     >
                       -
                     </button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => addToCart(item)}>+</button>
+                    <button onClick={() => addToCart(item)} aria-label="Aumentar quantidade">
+                      +
+                    </button>
                   </div>
                 </div>
               </div>
@@ -114,6 +117,7 @@ export default function CartDrawer({ isOpen, onClose }) {
               className="checkout-btn" 
               onClick={handleCheckout} 
               disabled={loading}
+              aria-label="Ir para o Pagamento"
             >
               {loading ? "Processando..." : "Ir para o Pagamento"}
             </button>
