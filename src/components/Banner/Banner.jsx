@@ -19,7 +19,7 @@ function Banner() {
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000 }}
         loop={true}
-        slidesPerView={2}
+        slidesPerView={1}
         spaceBetween={20}
       >
         {banners.map((banner, index) => (
