@@ -22,7 +22,7 @@ function Auth() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            LOJINHAS
+            LOJINHA
           </motion.h1>
         </Link>
 

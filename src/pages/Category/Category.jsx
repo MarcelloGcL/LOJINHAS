@@ -85,6 +85,7 @@ function Category() {
                     
                     <button
                       className="cat-buy-btn"
+                      aria-label="Comprar produto"
                       onClick={(e) => {
                         e.stopPropagation();
                         navigate(`/product/${item.id}`);

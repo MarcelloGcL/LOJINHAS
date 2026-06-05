@@ -152,9 +152,9 @@ function Header() {
       <header className={`header ${scrolled ? "scrolled" : ""}`}>
         <div className="header-container">
           <Link to="/" className="logo-link">
-            <h2 className="logo">
-              Loji<span>nhas</span>
-            </h2>
+            <h1 className="logo">
+              Loji<span>nha</span>
+            </h1>
           </Link>
 
           <div className="search">

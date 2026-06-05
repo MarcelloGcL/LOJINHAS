@@ -17,6 +17,7 @@ function Home() {
     <>
       <Header />
       <Banner />
+      <main>
       <Categories title="Confira nossas Categorias" />
       <ProductSection title="Consoles" categoriasIds={[8]} />
       <SectionDivider images={[Banner0]} />
@@ -26,6 +27,7 @@ function Home() {
       <SectionDivider images={[Banner3, Banner4, Banner5]} />
       <ProductSection title="Acessórios" categoriasIds={[5]} />
       <RecommendedBrands title="Marcas Recomendadas" />
+      </main>
       <Footer />
     </>
   );

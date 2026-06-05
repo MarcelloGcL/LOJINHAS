@@ -41,6 +41,7 @@ function ProductCard({ product }) {
 
       <button
         className="buy-button"
+        aria-label="Comprar produto"
         onClick={() => navigate(`/product/${product.id}`)}
       >
         <ShoppingBasket size={20} />

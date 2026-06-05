@@ -26,6 +26,7 @@ function Banner() {
           <SwiperSlide key={index}>
             <div
               className="banner-slide"
+              alt={banner.image}
               style={{ backgroundImage: `url(${banner.image})` }}
             />
           </SwiperSlide>

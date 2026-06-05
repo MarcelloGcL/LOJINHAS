@@ -148,10 +148,10 @@ export default function ProductDetails() {
               {product.stock > 0 ? `✔ Em estoque (${product.stock} unidades)` : "✖ Indisponível"}
             </p>
             <div className="buy-box">
-              <button className={`buy-btn ${isOutOfStock ? "disabled" : ""}`} disabled={isOutOfStock} onClick={handleBuyNow}>
+              <button className={`buy-btn ${isOutOfStock ? "disabled" : ""}`} aria-label="Comprar agora" disabled={isOutOfStock} onClick={handleBuyNow}>
                 {isOutOfStock ? "Indisponível" : "Comprar agora"}
               </button>
-              <button className="cart-btn" disabled={isOutOfStock} onClick={handleAddToCart}>
+              <button className="cart-btn" aria-label="Adicionar ao carrinho" disabled={isOutOfStock} onClick={handleAddToCart}>
                 Adicionar ao carrinho
               </button>
             </div>
