@@ -29,7 +29,9 @@ function Banner() {
                 src={banner.image}
                 alt={`Banner promocional ${index + 1}`}
                 fetchPriority={index === 0 ? "high" : "low"}
-                loading={index === 0 ? "eager" : "lazy"} 
+                loading={index === 0 ? "eager" : "lazy"}
+                width="1920"
+                height="768" 
                 className="banner-image"
               />
             </div>

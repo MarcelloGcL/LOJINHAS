@@ -8,15 +8,21 @@ import {
   Wrench,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect, useCallback, useRef } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  lazy,
+  Suspense,
+} from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "../../hooks/useAuth";
 import { getUser } from "../../services/userService";
 import { useCart } from "../../context/CartContext";
-import CartDrawer from "../cart/CartDrawer";
 import "./Header.css";
-import Swal from "sweetalert2";
-import "sweetalert2/dist/sweetalert2.min.css";
+
+const CartDrawer = lazy(() => import("../cart/CartDrawer"));
 
 function Header() {
   const { user, logout } = useAuth();
@@ -116,6 +122,8 @@ function Header() {
     try {
       await logout();
 
+      const Swal = (await import("sweetalert2")).default;
+
       setUserId(null);
       setPerfil(null);
       setTipoPerfil(null);
@@ -130,6 +138,8 @@ function Header() {
 
       navigate("/");
     } catch (error) {
+      const Swal = (await import("sweetalert2")).default;
+
       Swal.fire({
         icon: "error",
         title: "Ops...",
@@ -158,9 +168,17 @@ function Header() {
           </Link>
 
           <div className="search">
-            <Search size={18} className="search-icon" aria-label="Ícone de Busca" />
+            <Search
+              size={18}
+              className="search-icon"
+              aria-label="Ícone de Busca"
+            />
 
-            <input type="text" placeholder="Buscar produtos..." aria-label="Buscar produtos..." />
+            <input
+              type="text"
+              placeholder="Buscar produtos..."
+              aria-label="Buscar produtos..."
+            />
           </div>
 
           <div className="actions">
@@ -209,35 +227,67 @@ function Header() {
             )}
 
             {tipoPerfil?.toUpperCase() === "ADMINISTRADOR" && (
-              <Link to="/dashboard" className="action-item" title="Admin" aria-label="Painel de Administração">
+              <Link
+                to="/dashboard"
+                className="action-item"
+                title="Admin"
+                aria-label="Painel de Administração"
+              >
                 <Wrench size={24} />
               </Link>
             )}
 
-            <Link to="/atendimento" className="action-item" title="Atendimento" aria-label="Atendimento">
+            <Link
+              to="/atendimento"
+              className="action-item"
+              title="Atendimento"
+              aria-label="Atendimento"
+            >
               <Headset aria-label="Atendimento" size={24} />
             </Link>
 
-            <Link to="/favoritos" className="action-item" title="Favoritos" aria-label="Favoritos">
+            <Link
+              to="/favoritos"
+              className="action-item"
+              title="Favoritos"
+              aria-label="Favoritos"
+            >
               <Heart aria-label="Favoritos" size={24} />
             </Link>
 
-            <button className="cart" onClick={() => setIsCartOpen(true)} aria-label="Carrinho de Compras">
+            <button
+              className="cart"
+              onClick={() => setIsCartOpen(true)}
+              aria-label="Carrinho de Compras"
+            >
               <motion.div
                 animate={cartCount > 0 ? { scale: [1, 1.4, 1] } : {}}
                 transition={{
                   duration: 0.3,
                 }}
               >
-                <ShoppingBasket aria-label="Carrinho de Compras" size={26} strokeWidth={2.5} />
+                <ShoppingBasket
+                  aria-label="Carrinho de Compras"
+                  size={26}
+                  strokeWidth={2.5}
+                />
               </motion.div>
 
-              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+              {cartCount > 0 && (
+                <span className="cart-badge">{cartCount}</span>
+              )}
             </button>
           </div>
         </div>
 
-        <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+        {isCartOpen && (
+          <Suspense fallback={null}>
+            <CartDrawer
+              isOpen={isCartOpen}
+              onClose={() => setIsCartOpen(false)}
+            />
+          </Suspense>
+        )}
       </header>
     </>
   );
