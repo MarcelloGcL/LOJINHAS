@@ -15,7 +15,7 @@ function Banner() {
     <section className="banner">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
-        navigation
+        navigation={true}
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}

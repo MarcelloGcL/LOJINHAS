@@ -4,7 +4,7 @@
   padding: 15px;
   text-align: center;
   display: flex;
-  cursor:text;
+  cursor: text;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -45,4 +45,19 @@
 .brand-card:hover img {
   filter: grayscale(0%);
   opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .brand-card {
+    padding: 12px;
+  }
+
+  .brand-card img {
+    height: 120px;
+    margin-bottom: 10px;
+  }
+
+  .brand-card span {
+    font-size: 0.9rem;
+  }
 }

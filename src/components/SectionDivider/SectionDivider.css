@@ -1,23 +1,24 @@
-.section-divider{
+.section-divider {
   width: 95%;
+  max-width: 1400px;
   margin: 40px auto;
   display: grid;
   gap: 20px;
 }
 
-.columns-1{
+.columns-1 {
   grid-template-columns: 1fr;
 }
 
-.columns-2{
+.columns-2 {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.columns-3{
+.columns-3 {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.section-divider img{
+.section-divider img {
   width: 100%;
   height: auto;
   display: block;
@@ -26,6 +27,23 @@
   cursor: pointer;
 }
 
-.section-divider img:hover{
+.section-divider img:hover {
   transform: scale(1.02);
+}
+
+@media (max-width: 1024px) {
+  .columns-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-divider {
+    margin: 25px auto;
+    gap: 15px;
+  }
+
+  .columns-3 {
+    grid-template-columns: 1fr;
+  }
 }
