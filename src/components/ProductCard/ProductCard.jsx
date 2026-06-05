@@ -24,7 +24,7 @@ function ProductCard({ product }) {
       {discount && <span className="discount-badge">-{discount}%</span>}
 
       <div className="product-image">
-        <img src={product.image} alt={product.name} />
+        <img src={product.image} alt={product.name} width="200" height="160" />
       </div>
 
       <h3 className="product-name">{product.name}</h3>
