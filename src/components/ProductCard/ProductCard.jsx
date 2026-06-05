@@ -27,7 +27,7 @@ function ProductCard({ product }) {
         <img src={product.image} alt={product.name} />
       </div>
 
-      <h4 className="product-name">{product.name}</h4>
+      <h3 className="product-name">{product.name}</h3>
 
       <div className="price-box">
         {product.oldPrice && (

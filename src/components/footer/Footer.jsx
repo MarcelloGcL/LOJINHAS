@@ -12,16 +12,16 @@ const Footer = () => {
       <div className="footer-container">
         
         <div className="footer-brand">
-          <h2 className="logo-text">Tech<span>Store</span></h2>
+          <h2 className="logo-text">Loji<span>nha</span></h2>
           <p className="footer-description">Tecnologia de ponta para quem busca performance e inovação.</p>
           <div className="footer-socials">
-            <a href="#" aria-label="Instagram">
+            <a href="/em-breve" aria-label="Instagram">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
-            <a href="#" aria-label="Facebook">
+            <a href="/em-breve" aria-label="Facebook">
               <FontAwesomeIcon icon={faFacebook} />
             </a>
-            <a href="#" aria-label="LinkedIn">
+            <a href="/em-breve" aria-label="LinkedIn">
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
           </div>
@@ -62,7 +62,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-copy">
-        <p>© 2026 TechStore - Todos os direitos reservados</p>
+        <p>© 2026 Lojinha - Todos os direitos reservados</p>
       </div>
 
       {/* Botão Scroll to Top */}

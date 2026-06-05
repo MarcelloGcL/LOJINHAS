@@ -138,7 +138,7 @@ export default function ProductDetails() {
           </div>
           <div className="info">
             <h1>{product.name}</h1>
-            <span className="brand">Marca: <strong>{product.brand}</strong></span>
+            <span className="brand">Vendido por: <strong>{product.brand}</strong></span>
             <p className="description">{product.description}</p>
             <div className="price-boxDetails">
               <h2 className="price-details">{formatPrice(product.price)}</h2>

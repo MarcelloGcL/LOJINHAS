@@ -29,7 +29,7 @@
 
 .footer-description {
   font-size: 0.9rem;
-  color: #94a3b8;
+  color: #fff;
   max-width: 250px;
   margin-bottom: 20px;
 }
@@ -63,7 +63,7 @@
 
 .footer-list li {
   font-size: 0.9rem;
-  color: #cbd5e1;
+  color: #fff;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  color: #cbd5e1;
+  color: #fff;
 }
 
 .security-badges {
@@ -96,7 +96,7 @@
   max-width: 200px;
   gap: 10px;
   font-size: 0.8rem;
-  color: #cbd5e1;
+  color: #fff ;
 }
 
 .security-item svg {
@@ -104,12 +104,12 @@
 }
 
 .footer-copy {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--primary);
   text-align: center;
   padding: 20px;
   font-size: 0.8rem;
-  color: #64748b;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-top: 1px solid var(--secondary);
 }
 
 /*Botão de voltar ao topo*/
